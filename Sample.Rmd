@@ -41,7 +41,7 @@ datadir <- paste(wdir, "/data", sep="")
 imgdir <- paste(wdir, "/img", sep="")
 # directory where plots are saved to
 plotdir <- paste(wdir, "/plot", sep="")
-# y la carpeta inmediatamente por encima
+# the folder immediately above root
 wdirUp <- gsub("\\ProjectR", "", wdir) 
 ```
 
