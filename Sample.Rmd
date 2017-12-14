@@ -18,7 +18,7 @@ knitr::opts_chunk$set(collapse = TRUE, echo=TRUE)
 
 ```{r message=FALSE, warning=FALSE, results='hide'}
 # Installs missing libraries on render!
-list.of.packages <- c("rmarkdown", "dplyr", "ggplot2", "Rcpp", "knitr", "readxl")
+list.of.packages <- c("rmarkdown", "dplyr", "ggplot2", "Rcpp", "knitr", "Hmisc", "readxl")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages, repos='https://cran.rstudio.com/')
 ```
@@ -36,11 +36,11 @@ library(ggplot2)
 # directory where the notebook is
 wdir <- getwd() 
 # directory where data are imported from & saved to
-datadir <- paste(wdir, "/data", sep="")
+datadir <- file.path(wdir, "data") # better than datadir <- paste(wdir, "/data", sep="")
 # directory where external images are imported from
-imgdir <- paste(wdir, "/img", sep="")
+imgdir <- file.path(wdir, "img")
 # directory where plots are saved to
-plotdir <- paste(wdir, "/plot", sep="")
+plotdir <- file.path(wdir, "plot")
 # the folder immediately above root
 wdirUp <- gsub("\\ProjectR", "", wdir) 
 ```
@@ -66,19 +66,19 @@ routecsv <- paste(datadir, "/", dataname, ".csv", sep="")  # complete route to a
 mydata <- read.csv(paste(routecsv, sep=""), 
          header = TRUE, 
          sep = "\t",
-         dec = ",")
-
+         dec = ".")
 ```
 
 
 # Data operations
 
 ```{r comment="  ", message=FALSE, warning=FALSE}
+# Hmisc::describe(mydata)
 head(mydata)
 ```
 
 ```{r comment="  ", message=FALSE, warning=FALSE, fig.height=5, fig.width=6}
-p1 <- ggplot(cars, aes(x=speed, y=dist)) + geom_point()
+p1 <- ggplot(mydata, aes(x=speed, y=dist)) + geom_point()
 p1
 ```
 
