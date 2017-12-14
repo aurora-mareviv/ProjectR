@@ -40,13 +40,14 @@ mydata <- read_excel(routexl, sheet = 1)  # imports first sheet
 #---- CSV / TSV (separated by tabs in this example)
 dataname <- params$dataname # archive name
 routecsv <- paste(datadir, "/", dataname, ".csv", sep="")  # complete route to archive
-mydata <- read.csv(paste(routecsv, sep=""), 
+mydata <- read.csv(routecsv, 
                    header = TRUE, 
                    sep = "\t",
                    dec = ".")
 
 
 # Data operations
+# Hmisc::describe(mydata)
 head(mydata)
 p1 <- ggplot(cars, aes(x=speed, y=dist)) + geom_point()
 p1
@@ -57,8 +58,8 @@ p1
 plotname1 <- "p1.pdf"
 #---- TO PNG 
 plotname2 <- "p1.png"
-routeplot1 <- paste(plotdir, "/", plotname1, sep="")
-routeplot2 <- paste(plotdir, "/", plotname2, sep="")
+routeplot1 <- file.path(plotdir, plotname1)
+routeplot2 <- file.path(plotdir, plotname2)
 ggsave(routeplot1)  # (see http://ggplot2.tidyverse.org/reference/ggsave.html)
 ggsave(routeplot2) 
 
