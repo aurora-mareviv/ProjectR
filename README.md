@@ -12,4 +12,4 @@ Clone this repo!
 
 `git clone https://github.com/aurora-mareviv/ProjectR`
 
-
+![image-sketch](./img/scheme.png)
