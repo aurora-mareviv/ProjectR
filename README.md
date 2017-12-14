@@ -10,6 +10,8 @@ How it "works":
 
 Clone this repo!  
 
-`git clone https://github.com/aurora-mareviv/ProjectR`
+`git clone https://github.com/aurora-mareviv/ProjectR`  
+
+<br>
 
 ![image-sketch](./img/scheme.png)
