@@ -183,7 +183,7 @@ mydata &lt;-<span class="st"> </span><span class="kw">read_excel</span>(routexl,
 dataname &lt;-<span class="st"> </span>params<span class="op">$</span>dataname <span class="co"># archive name</span>
 routecsv &lt;-<span class="st"> </span><span class="kw">paste</span>(datadir, <span class="st">&quot;/&quot;</span>, dataname, <span class="st">&quot;.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)  <span class="co"># complete route to archive</span>
 
-mydata &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">paste</span>(routecsv, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>), 
+mydata &lt;-<span class="st"> </span><span class="kw">read.csv</span>(routecsv, 
          <span class="dt">header =</span> <span class="ot">TRUE</span>, 
          <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,
          <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</code></pre></div>
@@ -210,8 +210,8 @@ plotname1 &lt;-<span class="st"> &quot;p1.pdf&quot;</span>
 <span class="co"># TO PNG </span>
 plotname2 &lt;-<span class="st"> &quot;p1.png&quot;</span>
 
-routeplot1 &lt;-<span class="st"> </span><span class="kw">paste</span>(plotdir, <span class="st">&quot;/&quot;</span>, plotname1, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
-routeplot2 &lt;-<span class="st"> </span><span class="kw">paste</span>(plotdir, <span class="st">&quot;/&quot;</span>, plotname2, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
+routeplot1 &lt;-<span class="st"> </span><span class="kw">file.path</span>(plotdir, plotname1)
+routeplot2 &lt;-<span class="st"> </span><span class="kw">file.path</span>(plotdir, plotname2)
 <span class="kw">ggsave</span>(routeplot1)  <span class="co"># (see http://ggplot2.tidyverse.org/reference/ggsave.html)</span>
 <span class="kw">ggsave</span>(routeplot2) </code></pre></div>
 </div>

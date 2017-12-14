@@ -7,7 +7,7 @@ params <- NULL
 params$dataname <- "cars"
 
 # Installs missing libraries on render!
-list.of.packages <- c("rmarkdown", "dplyr", "ggplot2", "Rcpp", "knitr", "readxl")
+list.of.packages <- c("rmarkdown", "dplyr", "ggplot2", "Rcpp", "knitr", "Hmisc", "readxl")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages, repos='https://cran.rstudio.com/')
 
@@ -17,15 +17,15 @@ library(knitr)
 library(ggplot2)
 
 
-# directory where the script is
+# directory where the notebook is
 wdir <- getwd() 
 # directory where data are imported from & saved to
-datadir <- paste(wdir, "/data", sep="")
+datadir <- file.path(wdir, "data") # better than datadir <- paste(wdir, "/data", sep="")
 # directory where external images are imported from
-imgdir <- paste(wdir, "/img", sep="")
+imgdir <- file.path(wdir, "img")
 # directory where plots are saved to
-plotdir <- paste(wdir, "/plot", sep="")
-# y la carpeta inmediatamente por encima
+plotdir <- file.path(wdir, "plot")
+# the folder immediately above root
 wdirUp <- gsub("\\ProjectR", "", wdir) 
 
 
@@ -43,7 +43,7 @@ routecsv <- paste(datadir, "/", dataname, ".csv", sep="")  # complete route to a
 mydata <- read.csv(paste(routecsv, sep=""), 
                    header = TRUE, 
                    sep = "\t",
-                   dec = ",")
+                   dec = ".")
 
 
 # Data operations
