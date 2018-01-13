@@ -42,7 +42,8 @@ imgdir <- file.path(wdir, "img")
 # directory where plots are saved to
 plotdir <- file.path(wdir, "plot")
 # the folder immediately above root
-wdirUp <- gsub("\\ProjectR", "", wdir) 
+Up <- paste("\\", basename(wdir), sep="")
+wdirUp <- gsub(Up, "", wdir) 
 ```
 
 
