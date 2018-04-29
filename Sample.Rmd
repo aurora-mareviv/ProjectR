@@ -13,17 +13,17 @@ params:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(collapse = TRUE, echo=TRUE)
+knitr::opts_chunk$set(collapse = TRUE, echo=TRUE, message = FALSE, warning = FALSE, comment="  ")
 ```
 
-```{r message=FALSE, warning=FALSE, results='hide'}
+```{r results='hide'}
 # Installs missing libraries on render!
 list.of.packages <- c("rmarkdown", "dplyr", "ggplot2", "Rcpp", "knitr", "Hmisc", "readxl")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages, repos='https://cran.rstudio.com/')
 ```
 
-```{r message=FALSE, warning=FALSE, results='hide'}
+```{r results='hide'}
 library(dplyr)
 library(knitr)
 library(ggplot2)
@@ -32,7 +32,7 @@ library(ggplot2)
 
 # Working directories
 
-```{r comment="  "}
+```{r}
 # directory where the notebook is
 wdir <- getwd() 
 # directory where data are imported from & saved to
@@ -49,7 +49,7 @@ wdirUp <- gsub(Up, "", wdir)
 
 # Data import
 
-```{r comment="  ", eval=FALSE, warning=FALSE, message=FALSE}
+```{r eval=FALSE}
 # MSEXCEL
 dataname <- params$dataname # archive name
 routexl <- paste(datadir, "/", dataname, ".xlsx", sep="")  # complete route to archive
@@ -59,7 +59,7 @@ mydata <- read_excel(routexl, sheet = 1)  # imports first sheet
 ```
 
 
-```{r  comment="  ", eval=TRUE, warning=FALSE, message=FALSE}
+```{r eval=TRUE}
 # CSV / TSV (separated by tabs in this example)
 dataname <- params$dataname # archive name
 routecsv <- paste(datadir, "/", dataname, ".csv", sep="")  # complete route to archive
@@ -73,12 +73,12 @@ mydata <- read.csv(routecsv,
 
 # Data operations
 
-```{r comment="  ", message=FALSE, warning=FALSE}
+```{r}
 # Hmisc::describe(mydata)
 head(mydata)
 ```
 
-```{r comment="  ", message=FALSE, warning=FALSE, fig.height=5, fig.width=6}
+```{r fig.height=5, fig.width=6}
 p1 <- ggplot(mydata, aes(x=speed, y=dist)) + geom_point()
 p1
 ```
@@ -86,7 +86,7 @@ p1
 
 # Save plots
 
-```{r comment="  ", message=FALSE, warning=FALSE}
+```{r}
 # TO PDF 
 plotname1 <- "p1.pdf"
 # TO PNG 
@@ -101,12 +101,12 @@ ggsave(routeplot2)
 
 # Save data
 
-```{r comment="  ", message=FALSE, warning=FALSE}
+```{r}
 # RDATA
 save(mydata, file="data/mydata.RData")
 ```
 
-```{r  comment="  ", message=FALSE, warning=FALSE, eval=FALSE}
+```{r eval=FALSE}
 # MSEXCEL
 dataname2 <- "mydata"  # name we will give to file
 routexl2 <- paste(datadir, "/", dataname2, ".xlsx", sep="")   # complete route to future archive
@@ -115,7 +115,7 @@ library(xlsx)
 write.xlsx(mydata, routexl2) # creates archive in specified route
 ```
 
-```{r  comment="  ", eval=TRUE}
+```{r eval=TRUE}
 # CSV / TSV (separated by tabs in this example)
 dataname2 <- "mydata"  # name we will give to file
 routecsv2 <- paste(datadir, "/", dataname2, ".csv", sep="")  # complete route to future archive
