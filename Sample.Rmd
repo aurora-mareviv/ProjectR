@@ -5,6 +5,8 @@ date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
     highlight: tango
+csl: ./bib/csl/anesthesiology.csl
+bibliography: ./bib/bibliography.bib
 editor_options: 
   chunk_output_type: console
 params:
