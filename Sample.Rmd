@@ -18,14 +18,14 @@ params:
 knitr::opts_chunk$set(collapse = TRUE, echo=TRUE, message = FALSE, warning = FALSE, comment="  ")
 ```
 
-```{r results='hide'}
+```{r install, results='hide'}
 # Installs missing libraries on render!
 list.of.packages <- c("rmarkdown", "dplyr", "ggplot2", "Rcpp", "knitr", "Hmisc", "readxl")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages, repos='https://cran.rstudio.com/')
 ```
 
-```{r results='hide'}
+```{r libraries, results='hide'}
 library(dplyr)
 library(knitr)
 library(ggplot2)
@@ -34,7 +34,7 @@ library(ggplot2)
 
 # Working directories
 
-```{r}
+```{r directories}
 # directory where the notebook is
 wdir <- getwd() 
 # directory where data are imported from & saved to
